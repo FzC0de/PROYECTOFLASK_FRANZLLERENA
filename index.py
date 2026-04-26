@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -16,7 +16,16 @@ def login():
     else:
         return render_template("login.html", mensaje="Usuario o contraseña incorrectos")
 
+@app.route("/predict/<float:celsius>", methods=["GET"])
+def predict_get(celsius):
+    celsius = float(celsius)
+    fahrenheit = (celsius * 9/5) + 32
+
+    return jsonify({
+        "celsius": celsius,
+        "fahrenheit": fahrenheit
+    })
+
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-    
