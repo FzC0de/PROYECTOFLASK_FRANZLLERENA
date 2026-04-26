@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Convertidor</title>
+</head>
+<body>
+    <h2>Convertir Celsius a Fahrenheit</h2>
+
+    <form action="/convertir" method="post">
+        <input type="number" step="any" name="celsius" placeholder="Ingrese °C" required>
+        <button type="submit">Convertir</button>
+    </form>
+
+    {% if resultado %}
+        <h3>Resultado: {{ resultado }} °F</h3>
+    {% endif %}
+</body>
+</html>
