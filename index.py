@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)  # 🔥 HABILITA CORS para Flutter
 
 @app.route("/")
 def inicio():
@@ -30,7 +31,6 @@ def predict_get(celsius):
         "fahrenheit": fahrenheit
     })
 
-
 @app.route("/convertidor")
 def convertidor():
     return render_template("convertidor.html", resultado=None)
@@ -41,7 +41,6 @@ def convertir():
     fahrenheit = (celsius * 9/5) + 32
 
     return render_template("convertidor.html", resultado=fahrenheit)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
